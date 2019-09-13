@@ -2,7 +2,7 @@ import java.util.*;
 
 class BasicOperations
 {
-        public static void main(String args[])
+        public static void main(String x[])
         {
             int a,b;
             Scanner obj1=new Scanner(System.in);
