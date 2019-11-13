@@ -33,7 +33,7 @@ void create()
 			scanf("%d",&ptr->info);
 		}
 	}
-	ptr->next=NULL;	
+	ptr->next=NULL;
 }
 void insertBeg()
 {
@@ -49,7 +49,7 @@ void insertBeg()
 		start->prev=m;
 		start=m;
 		m->prev=NULL;
-	}	
+	}
 
 }
 void insertAny()
@@ -76,7 +76,7 @@ void insertAny()
 		ptr->prev=m;
 		printf("\nEnter the info: ");
 		scanf("%d",&m->info);
-	}	
+	}
 }
 void insertEnd()
 {
@@ -96,23 +96,23 @@ void insertEnd()
 		ptr->next=m;
 		m->prev=ptr;
 		m->next=NULL;
-	}	
+	}
 
 }
 void delBeg()
 {
 	struct Node *m;
 	if(start==NULL)
-		printf("\nEMPTY !!!");	
+		printf("\nEMPTY !!!");
 	else
 	{
 		m=start;
 		start=start->next;
 		free(m);
 		start->prev=NULL;
-		
+
 	}
-	
+
 }
 void delAny()
 {
@@ -122,7 +122,7 @@ void delAny()
 		printf("\nEMPTY !!!");
 	else
 	{
-		
+
 		printf("\nEnter the position for deletion : ");
 		scanf("%d",&n);
 		ptr=start;
@@ -135,7 +135,7 @@ void delAny()
 		ptr->next->next->prev=ptr;
 		ptr->next=ptr->next->next;
 		free(m);
-	}	
+	}
 }
 void display()
 {
@@ -148,9 +148,9 @@ void display()
 		{
 			printf("\nElement : %d ",ptr->info);
 			ptr=ptr->next;
-		
+
 		}
-	
+
 	}
 
 }
@@ -165,15 +165,29 @@ void delEnd()
 		while(ptr->next->next!=NULL)
 		{
 			ptr=ptr->next;
-		
+
 		}
 		m=ptr->next;
 		ptr->next=NULL;
 		free(m);
-	}	
-		
-	
-
+	}
+}
+void reverseList()
+{
+    struct Node *q,*r=NULL;
+    q=start;
+    ptr=start->next;
+    while(ptr!=NULL)
+    {
+        q->next=r;
+        q->prev=ptr;
+        r=q;
+        q=ptr;
+        ptr=ptr->next;
+    }
+    q->prev=NULL;
+    q->next=r;
+    start=q;
 }
 int main()
 {
@@ -185,17 +199,19 @@ int main()
 		 printf("\nPress 1 for Creation :");
 		 printf("\nPress 2 for Insert at Beginning :");
 		 printf("\nPress 3 for Insert at End :");
-		 printf("\nPress 4 for Insert at Any Position :");	 	 	 	 	         printf("\nPress 5 for Delete at Beginning :");
+		 printf("\nPress 4 for Insert at Any Position :");
+		 printf("\nPress 5 for Delete at Beginning :");
 		 printf("\nPress 6 for Delete at any Position :");
 		 printf("\nPress 7 for Delete from End :");
-		 printf("\nPress 8 for Display :");
+		 printf("\nPress 8 for Reversing the List: ");
+		 printf("\nPress 9 for Display :");
 		 printf("\n\nEnter your choice :");
 		 scanf("%d",&num);
 		 switch(num)
 		 {
 		 	case 1:
 		 		create();
-		 		break;	 
+		 		break;
 		 	case 2:
 		 		insertBeg();
 		 		break;
@@ -203,7 +219,7 @@ int main()
 		 		insertEnd();
 		 		break;
 		 	case 4:
-		 		
+
 		 		insertAny();
 		 		break;
 		 	case 5:
@@ -216,14 +232,17 @@ int main()
 		 		delEnd();
 		 		break;
 		 	case 8:
+                reverseList();
+                break;
+		 	case 9:
 		 		display();
 		 		break;
 		 	default:
 		 		break;
-		 
+
 		 }
 		 printf("\nWant to Continue ???  ");
 		 scanf(" %c",&ch);
-	}		
-	 return 0; 
+	}
+	 return 0;
 }
