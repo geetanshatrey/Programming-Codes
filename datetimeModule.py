@@ -1,0 +1,20 @@
+import datetime
+
+t=datetime.time(2,40,1)
+print(t)
+print("Second",t.second)
+print('Earliest  :', datetime.time.min)
+print('Latest    :', datetime.time.max)
+print('Resolution:', datetime.time.resolution)
+
+today=datetime.date.today()
+print(today)
+print('ctime:', today.ctime())
+print('tuple:', today.timetuple())
+print('ordinal:', today.toordinal())
+print('Year :', today.year)
+print('Month:', today.month)
+print('Day  :', today.day)
+d2 = today.replace(year=1995)
+print('d2:', d2)
+print(today-d2)
