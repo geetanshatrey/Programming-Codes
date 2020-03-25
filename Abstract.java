@@ -2,7 +2,7 @@ abstract class Area
 {
 	abstract void area();	
 }
-
+//abstract class 
 class Triangle extends Area
 {
 	int b = 10, h = 20;
