@@ -7,24 +7,27 @@
 #include<sys/types.h>
 #include<sys/stat.h>
 
-int findFileSize(FILE* f1){
-    if(f1!=NULL){
-        fseek(f1,0, SEEK_END); 
-        int res = ftell(f1);  
-        fseek(f1,0,SEEK_SET);
-        return res;
-    }
-    else 
-        return -1;
-}
+//int findFileSize(int f1){
+//    if(f1>0){
+//        FILE* fp = fdopen(f1, "w");
+//        fseek(fp,0, SEEK_END);
+//        int res = ftell(fp);
+//        fseek(fp,0,SEEK_SET);
+//        return res;
+//    }
+//    else
+//        return -1;
+//}
  int main(){
-    FILE *f1,*f2;
-    f1=fileOpen("ExistingFile.txt",'r');
-    int n=findFileSize(f1);
-    char* buf = (char*) malloc(n);
-    f2=fileOpen("NewFile.txt",'w');
-    if(f1!=NULL && f2!=NULL){
-        buf=fileRead(f1,buf,n);
-        fileWrite(f2,buf,n);
+    int f1,f2;
+    f1=fileOpen("ExistingFile.txt","r");
+    //int n=findFileSize(f1);
+    char* buf = (char*) malloc(10);
+    f2=fileOpen("NewFile.txt","w");
+    if(f1>0 && f2>0){
+        buf=fileRead(f1,buf,10);
+        fileWrite(f2,buf,10);
     }
+     fileClose(f1);
+     fileClose(f2);
 }
