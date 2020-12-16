@@ -1,4 +1,4 @@
-// Time Complexity : O(N)
+// Time Complexity : O(N * LogN)
 // Problem : Pair Sum Problem
 
 #include<iostream>
