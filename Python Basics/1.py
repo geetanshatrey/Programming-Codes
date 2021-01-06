@@ -1,0 +1,5 @@
+x = input("\nEnter a number : ")
+y = int(x)
+x = input("\nEnter another number : ")
+z = int(x)
+print("\nResult : ", z - y)
